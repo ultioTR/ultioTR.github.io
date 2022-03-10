@@ -78,6 +78,11 @@
 
     <div class="zemin">
  
+<body onload="dijitalSaat();">
+    <div class='Switchbtn2'>
+
+    <div class="zemin">
+ 
         <table class="tabBlok" align="center" cellspacing="0" cellpadding="0" border="0">
             <tr><td class="dijitalSaat" id="dt"></td> 
                 <td>
@@ -94,6 +99,40 @@
     </div>
 </body>
  
+<script>
+    // tarih oluşturma fonksiyonu
+    function dijitalSaat() {
+        var dt = new Date();    // DATE() ile yeni bir tarih nesnesi oluşturuldu.
+        var saat = dt.getHours();
+        var dakika = dt.getMinutes();
+        var saniye = dt.getSeconds();
+ 
+        dakika = Tik(dakika);
+        saniye = Tik(saniye);
+ 
+        document.getElementById('dt').innerHTML = saat + ":" + dakika;
+        document.getElementById('dt_saniye').innerHTML = saniye;
+ 
+        if (saat > 12) { 
+            document.getElementById('dt_saat').innerHTML = '😊'; 
+        }
+        else { 
+            document.getElementById('dc_hour').innerHTML = '😴'; 
+        }
+ 
+        // her 1 saniyede bir yenileme yapılıyor.
+        var time
+        time = setInterval('dijitalSaat()', 1000);
+    }
+ 
+    function Tik(tikDegeri) {
+        if (tikDegeri < 10) {
+            tikDegeri = "0" + tikDegeri;
+        }
+        return tikDegeri;
+    }
+</script>
+
             <li class="header__sm-menu-link">
               <a href="./index.html#contact"> Contact </a>
             </li>
